@@ -14,6 +14,9 @@ app.use(express.json())
 
 //* importing routes 
 const authRoute = require('./routes/authRoute')
+const adminRoute = require("./routes/adminRoute")
+const messageRoute = require('./routes/messageRoute')
+const userRoute = require('./routes/userRoute')
 
 //*DB Connection
 const connectDB = require('./DB/connection');
@@ -23,6 +26,14 @@ connectDB();
 //* Authentication route
 app.use('/api', authRoute)
 
+//* Admin route
+app.use('/api', adminRoute)
+
+//* User route
+app.use('/api', userRoute)
+
+//* Message route
+app.use('/api', messageRoute)
 
 //* App listening
 app.listen(PORT, ()=>{

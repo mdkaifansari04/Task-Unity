@@ -30,6 +30,10 @@ const adminSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    name : {
+        type : String,
+        required :true
+    }
 }, {timestamps : true})
 
 const Admin = new model('Admin', adminSchema)

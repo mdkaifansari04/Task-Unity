@@ -1,6 +1,6 @@
 
-const Admin = require('../models/adminSchema')
-const User = require('../models/userSchema')
+const Admin = require('../../models/adminSchema')
+const User = require('../../models/userSchema')
 const bcrypt = require('bcrypt');
 
 //* Using jwt for token generation
@@ -13,12 +13,14 @@ const jwt = require('jsonwebtoken');
 
 exports.registerAdmin = async (req, res) => {
     try {
-        const { email, password, phoneNo, role, address } = req.body
+        const { email, password, phoneNo, role, address,name } = req.body
 
         //* If invalid input 
-        if (!email || !password || !phoneNo || !role || !address) {
-            res.status.json({ success: false, message: 'Missing required fields' });
+        if (!email || !password || !phoneNo || !address || !name) {
+            return res.status(400).json({ success: false, message: 'Missing required fields' });
         }
+
+        if(password.length < 8) return res.status(400).json({success : true, message : "Password must be 8 character long"})
 
         // //* If admin exist
         const adminExist = await Admin.find({})
@@ -33,13 +35,14 @@ exports.registerAdmin = async (req, res) => {
             password: hashedPassword,
             phoneNo,
             role,
-            address
+            address,
+            name
         })
 
         const token = await jwt.sign({
             exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24 * 30), //* expire in 30 days
             id: admin._id,
-            userType: 'admin'
+            userType: 'Admin'
         }, process.env.AUTH_SECRET_KEY);
 
         //* Response
@@ -51,63 +54,7 @@ exports.registerAdmin = async (req, res) => {
 
 
 
-//? User Auth 
 
-//* Register User
-
-exports.registerUser = async (req, res) => {
-    try {
-        const {
-            email,
-            password,
-            phoneNo,
-            type,
-            languages,
-            occupation,
-            dob,
-            role,
-            skills,
-            qualification,
-            permanentAddress,
-            correspondingAddress,
-        } = req.body;
-
-        // Check for required fields
-        if (!email || !password || !phoneNo || !type) {
-            return res.status(400).json({ success: false, message: 'Missing required fields' });
-        }
-
-        // Check if user already exists
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(409).json({ success: false, message: 'User already exists' });
-        }
-
-        // Hashing password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Create User
-        const user = await User.create({
-            email,
-            password: hashedPassword,
-            phoneNo,
-            type,
-            languages,
-            occupation,
-            dob,
-            role,
-            skills,
-            qualification,
-            permanentAddress,
-            correspondingAddress,
-        });
-
-        // Response
-        res.status(200).json({ success: true, message: 'User Created Successfully', user });
-    } catch (error) {
-        res.status(500).json({ success: false, message: 'User Registration Error', error: error.message });
-    }
-};
 
 
 

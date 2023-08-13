@@ -11,7 +11,11 @@ const messageSchema = new Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'User'
     },
-    content: {
+    senderName : {
+        type: String,
+        required: true
+    },
+    message: {
         type: String,
         required: true
     },

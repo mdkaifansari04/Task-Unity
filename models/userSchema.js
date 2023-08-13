@@ -1,36 +1,36 @@
 const mongoose = require("mongoose")
 
-const {Schema, model} = mongoose
+const { Schema, model } = mongoose
 
 const userSchema = new Schema({
-    email :{
-        type : String,
-        required : true,
+    email: {
+        type: String,
+        required: true,
     },
-    password : {
-        type : String,
-        required : true,
+    password: {
+        type: String,
+        required: true,
     },
-    phoneNo : {
-        type : Number,
-        required : true
+    phoneNo: {
+        type: Number,
+        required: true
     },
-    type : {
-        type : String,
-        enum : ['member', 'associate']
+    type: {
+        type: String,
+        enum: ['member', 'associate']
     },
     completedTask: {
-        type : Number,
-        default : 0,
+        type: Number,
+        default: 0,
     },
-    pendingTask : {
-        type : Number,
-        default : 0
+    pendingTask: {
+        type: Number,
+        default: 0
     },
-    languages : [String],
+    languages: [String],
     task: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Task' 
+        ref: 'Task'
     }],
     occupation: {
         type: String
@@ -51,11 +51,16 @@ const userSchema = new Schema({
     qualification: {
         type: String
     },
-    profileImage : String,
-    permanentAddress : String,
-    correspondingAddress : String,
+    name: {
+        type: String,
+        required: true
+    },
+    profileImage: String,
+    permanentAddress: String,
+    correspondingAddress: String,
 
-}, {timestamps : true})
+
+}, { timestamps: true })
 
 const User = new model('User', userSchema)
 
