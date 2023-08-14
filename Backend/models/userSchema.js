@@ -28,10 +28,6 @@ const userSchema = new Schema({
         default: 0
     },
     languages: [String],
-    task: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Task'
-    }],
     occupation: {
         type: String
     },

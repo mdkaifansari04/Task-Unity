@@ -43,6 +43,8 @@ exports.updateTask = async (req, res) => {
             description,
             priorityLevel,
             estimateTime,
+            status,
+            comments
         } = req.body;
 
         if (!title || !description || !priorityLevel || !estimateTime) {
@@ -54,7 +56,9 @@ exports.updateTask = async (req, res) => {
             title,
             description,
             priorityLevel,
-            estimateTime
+            estimateTime,
+            status,
+            comments
         };
 
         const updatedTask = await Task.findByIdAndUpdate(
