@@ -13,7 +13,7 @@ exports.sendMessage = async (req, res) => {
 
 
         //* if user undefined user type
-        if(userType != "Admin" && userType != "User") return res.status(400).json({success : false , message : "User Type not defined"}) 
+        if (userType != "Admin" && userType != "User") return res.status(400).json({ success: false, message: "User Type not defined" })
 
         //* find receiver info 
         let receiver = (userType == "Admin" ? "User" : "Admin")
@@ -24,16 +24,31 @@ exports.sendMessage = async (req, res) => {
 
         console.log(req.id);
         const sender = await eval(userType).findById(req.id)
-        console.log( sender );
+        console.log(sender);
         const newMessage = await Message.create({
             message,
             senderId: req.id,
-            senderName : sender.name,
-            receiverId : receiverData._id,
+            senderName: sender.name,
+            receiverId: receiverData._id,
         })
 
-        res.status(200).json({ success: true, message: "Message Sent", message: newMessage })
+        res.status(200).json({ success: true, message: "Message Sent", messages: newMessage })
     } catch (error) {
         res.status(500).json({ success: false, message: "Error : Message not sent ", error: error.message })
+    }
+}
+
+
+exports.getMyMessage = async (req, res) => {
+    try {   
+            const messages = await Message.find({receiverId : req.id})
+
+            //* If no message available
+            if(!messages) res.status(404).json({success : false , message : "Failed to get messages", messages })
+
+            //* Sending messages
+            res.status(200).json({success : true, messages :"Message received", messages})
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error : Failed to fetch messages, please refresh", error: error.message })
     }
 }

@@ -14,7 +14,7 @@ const jwt = require('jsonwebtoken');
 exports.registerAdmin = async (req, res) => {
     try {
         const { email, password, phoneNo, role, address,name } = req.body
-
+        
         //* If invalid input 
         if (!email || !password || !phoneNo || !address || !name) {
             return res.status(400).json({ success: false, message: 'Missing required fields' });
@@ -51,10 +51,6 @@ exports.registerAdmin = async (req, res) => {
         res.status(500).json({ success: false, message: "Admin Registration Error", error: error.message })
     }
 }
-
-
-
-
 
 
 

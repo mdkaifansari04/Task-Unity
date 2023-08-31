@@ -25,7 +25,7 @@ exports.registerUser = async (req, res) => {
         } = req.body;
 
         // Check for required fields
-        if (!email || !password || !phoneNo || !type || !name) {
+        if (!email || !password || !phoneNo || !name) {
             return res.status(400).json({ success: false, message: 'Missing required fields' });
         }
 
@@ -74,6 +74,7 @@ exports.updateUser = async (req, res) => {
         }
 
         const updateUser = await User.findByIdAndUpdate({ _id: req.params.userId }, { $set: req.body }, { new: true })
+        // updateUser.password = await bcrypt.hash(req.body.password, 10)
 
         res.status(200).json({success : true , message : "User updated successfully", user : updateUser})
 

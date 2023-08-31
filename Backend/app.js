@@ -5,7 +5,7 @@ require("dotenv").config()
 
 //* Express for routing
 const express = require("express")
-const PORT = 3000 || process.env.PORT
+const PORT = 8000 || process.env.PORT
 const app = express()
 
 
@@ -21,6 +21,11 @@ const userRoute = require('./routes/userRoute')
 //*DB Connection
 const connectDB = require('./DB/connection');
 connectDB();   
+
+
+//* Using cors for security purpose
+const cors = require('cors');
+app.use(cors());
 
 
 //* Authentication route

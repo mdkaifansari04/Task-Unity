@@ -5,11 +5,11 @@ const { Schema, model } = mongoose
 const userSchema = new Schema({
     email: {
         type: String,
-        required: true,
+        required: true
     },
     password: {
         type: String,
-        required: true,
+        required: true
     },
     phoneNo: {
         type: Number,
