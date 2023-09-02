@@ -33,7 +33,7 @@ function App() {
                 <Route path="profile" element={<UserProfile />} />
               </Route>
               <Route exact path='/login' element={<Login />} />
-              <Route exact path='/admin/login' element={<Login />} />
+              <Route exact path='/admin-login' element={<Login />} />
               <Route exact path='/admin/register' element={<Register />} />
             </Routes>
           </Router>

@@ -5,6 +5,7 @@ import {
     Checkbox,
     Button,
     Typography,
+    Spinner,
 } from "@material-tailwind/react";
 import LoginNavbar from '../../../components/layout/Navbar/LoginNavbar';
 import AuthContext from '../../../global/context/authContext/AuthContext';
@@ -18,6 +19,8 @@ function Login() {
 
     const context = useContext(AuthContext)
     const { login } = context
+
+    const [btnLoading, setBtnLoading]  =useState(false)
 
     const location = useLocation()
 
@@ -33,6 +36,7 @@ function Login() {
     }
 
     const handleLogin = async () => {
+        setBtnLoading(true)
         const data = credentials
         if (location.pathname === '/admin/login') data.userType = "admin"
         else data.userType = "user"
@@ -40,6 +44,7 @@ function Login() {
         console.log(data);
         const response = await login(data)
         if (response) navigate('/')
+        setBtnLoading(false)
     }
     return (
         <section>
@@ -66,8 +71,8 @@ function Login() {
                                     <Input className="dark:text-white" onChange={handleChange} id='email' name='email' value={credentials.email} size="lg" label="Email" required />
                                     <Input className="dark:text-white" onChange={handleChange} id='password' name='password' value={credentials.password} type="password" size="lg" label="Password" autoComplete='false' required min={8} />
                                 </div>
-                                <Button disabled={disable} onClick={handleLogin} className="mt-6 bg-[#6973E3]" fullWidth>
-                                    Sign in
+                                <Button disabled={disable} onClick={handleLogin} className="mt-6 bg-[#6973E3] flex justify-center" fullWidth>
+                                    {btnLoading ? <Spinner className='w-4 h-4 align-middle justify-center'/> : "Sign in"}
                                 </Button>
                             </form>
                         </Card>

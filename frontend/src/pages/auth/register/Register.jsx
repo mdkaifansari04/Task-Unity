@@ -4,6 +4,7 @@ import {
     Input,
     Button,
     Typography,
+    Spinner,
 } from "@material-tailwind/react";
 import LoginNavbar from '../../../components/layout/Navbar/LoginNavbar';
 import { useNavigate } from 'react-router-dom';
@@ -19,6 +20,7 @@ function Register() {
 
     const [credentials, setCredentials] = useState({})
     const [disable, setDisable] = useState(true)
+    const [btnLoading, setBtnLoading]  =useState(false)
 
     const context = useContext(AuthContext)
     const { registerAdmin } = context
@@ -30,7 +32,9 @@ function Register() {
         setDisable(false)
     }
     const handleSubmit = async() => {
+        setBtnLoading(true)
         await registerAdmin(credentials)
+        setBtnLoading(false)
     }
 
     return (
@@ -61,8 +65,8 @@ function Register() {
                                     <Input name='address' id='address' onChange={handleChange} size="lg" label="Address" />
                                     <Input name='password' id='password' onChange={handleChange} type="password" size="lg" label="Password" />
                                 </div>
-                                <Button onClick={handleSubmit} className="mt-6 bg-[#6973E3]" fullWidth>
-                                    Sign in
+                                <Button onClick={handleSubmit} className="mt-6 bg-[#6973E3] flex justify-center" fullWidth>
+                                {btnLoading ? <Spinner className='w-4 h-4 align-middle justify-center'/> : "Sign up"}
                                 </Button>
                             </form>
                         </Card>
