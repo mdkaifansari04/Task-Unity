@@ -13,11 +13,15 @@ export const createServerRequest = async (method, url) => {
                 "Content-Type": "application/json",
                 "Authorization" :`Bearer ${token}`
             },
-            data: JSON.stringify()
         });
         return response.data
     } catch (error) {
-        console.log("Error :" + error.message);
+        console.log(error);
+        const e = {
+            success : false,
+            message :  error.message
+        }
+        return e
     }
 }
 
@@ -36,7 +40,12 @@ export const createUserRequest = async (method, url, data) => {
         })
         return response.data
     } catch (error) {
-        return error.response.data
+        console.log(error);
+        const e = {
+            success : false,
+            message :  error.message
+        }
+        return e
     }
 }
 
@@ -55,6 +64,11 @@ export const createAuthRequest = async (method, url, data) => {
         })
         return response.data
     } catch (error) {
-        return error.response.data
+        console.log(error);
+        const e = {
+            success : false,
+            message :  error.response.data.message
+        }
+        return e
     }
 }

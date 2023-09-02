@@ -43,10 +43,10 @@ exports.dashboard = async (req, res) => {
             return res.status(404).json({ success: false, message: "No dashboard data found" });
         }
 
-        const { totalTasks, users, activeTasks, pendingTasks, completedTasks } = dashboardData[0]
+        const {activeTasks, pendingTasks, completedTasks } = dashboardData[0]
         
         const data = {
-            totalTasks,
+            totalTasks : allTask.length,
             user : allUser.length,
             activeTasks,
             pendingTasks,

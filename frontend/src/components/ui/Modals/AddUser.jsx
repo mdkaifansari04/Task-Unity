@@ -6,7 +6,7 @@ import {
     DialogBody,
     Input,
     DialogFooter,
-    Select, Option
+    Spinner
 } from "@material-tailwind/react";
 import UserContext from "../../../global/context/userContext/UserContext";
 
@@ -14,12 +14,12 @@ import UserContext from "../../../global/context/userContext/UserContext";
 export function AddUserModal(props) {
     const context = useContext(UserContext)
     const { createUser, updateUser,updateAccount } = context
-
     const closeRef = useRef(null)
 
     const { handleOpen, open, user, option, userType } = props
     const [userData, setUserData] = useState({})
     const [disabledOption, setdisableOption] = useState(true)
+    const [btnLoading, setBtnLoading] = useState(false)
 
     useEffect(() => {
         console.log(user);
@@ -36,11 +36,13 @@ export function AddUserModal(props) {
     }
 
     const handleSubmit = async () => {
+        setBtnLoading(true)
         if (option === "Create") {
             await createUser(userData)
         } else {
             await updateUser(userData)
         }
+        setBtnLoading(false)
         handleOpen()
     }
 
@@ -93,7 +95,7 @@ export function AddUserModal(props) {
                             close
                         </Button>
                         <Button type="submit" disabled={disabledOption} onClick={handleSubmit} className="green-btn rounded-md btn-green-shadow">
-                            {option}
+                        {btnLoading ? <Spinner className="h-5 w-5" /> : option}
                         </Button>
                     </DialogFooter>
                 </Dialog>

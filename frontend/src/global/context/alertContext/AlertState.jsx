@@ -1,6 +1,6 @@
 
 import AlertContext from "./AlertContext";
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const AlertState = (props) => {
     const option = {
@@ -21,9 +21,22 @@ const AlertState = (props) => {
         if (type === "info") return toast.info(message, option);
         toast(message, option);
     }
+    
+    const showPromiseAlert = async(promise) => {
+        await toast.promise(
+            promise,
+            {
+                pending: 'Loading server data.. ',
+                success: 'Completed',
+                error: 'Some Error Occur'
+            },
+            option
+        )
+        return
+    }
 
     return (
-        <AlertContext.Provider value={{showAlert}}>
+        <AlertContext.Provider value={{ showAlert,showPromiseAlert }}>
             {props.children}
         </AlertContext.Provider>
     )

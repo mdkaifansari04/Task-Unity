@@ -6,6 +6,7 @@ import {
     DialogBody,
     Input,
     DialogFooter,
+    Spinner 
 } from "@material-tailwind/react";
 import UserContext from '../../../global/context/userContext/UserContext';
 
@@ -13,6 +14,8 @@ import UserContext from '../../../global/context/userContext/UserContext';
 function EditUser(props) {
     const { handleOpen, user, open } = props
     const [userData, setUserData] = useState({})
+
+    const [btnLoading, setBtnLoading] = useState(false)
 
     const context = useContext(UserContext)
     const { updateAccount } = context
@@ -32,7 +35,9 @@ function EditUser(props) {
 
 
     const handleSubmit = async () => {
+        setBtnLoading(true)
         await updateAccount(userData)
+        setBtnLoading(false)
         handleOpen()
     }
 
@@ -71,7 +76,7 @@ function EditUser(props) {
                             close
                         </Button>
                         <Button className="green-btn rounded-sm btn-green-shadow" onClick={handleSubmit}>
-                            Edit
+                        {btnLoading ? <Spinner className="h-5 w-5" /> : "Edit"}
                         </Button>
                     </DialogFooter>
                 </Dialog>

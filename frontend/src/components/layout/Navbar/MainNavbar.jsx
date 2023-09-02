@@ -38,6 +38,7 @@ export default function MainNavbar(props) {
     const handleLogout = () => {
         localStorage.removeItem("taskUnityUserType")
         localStorage.removeItem("taskUnityAuthToken")
+        localStorage.removeItem("taskUnityUserName")
         navigate('/login')
     }
 

@@ -89,7 +89,7 @@ export function Table(props) {
                                     ))}
                                 </tr>
                             </thead>
-                            {data === undefined ? <NoDataFoundAnimation /> :
+                            {data === undefined || data.length <=0? <NoDataFoundAnimation /> :
                                 <tbody>
                                     {data.map(
                                         (user, index) => {

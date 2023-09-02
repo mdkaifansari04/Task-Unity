@@ -51,8 +51,8 @@ function Login() {
                     <img src="https://cdn.dribbble.com/userupload/9289255/file/original-6ca1881421ca94cca82e8a5f506ac546.png?resize=1504x1128" alt="Login" />
                 </div>
                 <div className="login-container mx-auto flex justify-center lg:w-1/2" >
-                    <div className="login-card px-3">
-                        <Card color="transparent" shadow={false}>
+                    <div className="login-card px-3 ">
+                        <Card className='p-2 md: blur-card md:p-7' color="transparent" shadow={false}>
                             <div className="heading p-4">
                                 <Typography variant="h4" color="blue-gray">
                                     Login

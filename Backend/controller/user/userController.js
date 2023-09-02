@@ -9,7 +9,7 @@ exports.dashboard = async (req, res) => {
 
         const tasks = await Task.find({ userId: req.id })
 
-        res.status(200).json({ success: true, message: "Welcome to the dashboard", user, tasks })
+        res.status(200).json({ success: true, message: "Welcome to the User dashboard", user, tasks })
     } catch (error) {
         res.status(500).json({ success: true, message: "Failed to fetch data of dashboard", error: error.message })
     }

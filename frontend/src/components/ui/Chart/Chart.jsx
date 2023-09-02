@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chart as ChartJS } from 'chart.js/auto'
-import { Chart, Bar, Line, Radar, Doughnut } from 'react-chartjs-2'
+import { Chart, Bar, Line, Doughnut } from 'react-chartjs-2'
 
 
 function MyChart(props) {
@@ -16,7 +16,8 @@ function MyChart(props) {
                 data: graphData,
                 backgroundColor: "#727CF4",
                 borderColor: '#7481CF',
-                hoverBackgroundColor :"#949df9"
+                hoverBackgroundColor: "#949df9",
+                barThickness: 10,
             },
         ],
     }
@@ -59,7 +60,6 @@ function MyChart(props) {
                 width={500}
                 data={pieData}
             />}
-
         </div>
     );
 }

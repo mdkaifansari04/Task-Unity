@@ -9,10 +9,12 @@ import {
     Chip,
     CardFooter,
     Checkbox,
+    Spinner,
 } from "@material-tailwind/react";
 import NoDataFoundAnimation from '../Animation/NoDataFoundAnimation';
 import TaskContext from '../../../global/context/taskContext/TaskContext';
 import HomeContext from '../../../global/context/homeContext/HomeContext';
+import CompletedButton from '../Button/CompletedButton';
 
 function TaskTable(props) {
     const { title, description, tableHeaderArray, data } = props
@@ -21,19 +23,12 @@ function TaskTable(props) {
 
     const homeContext = useContext(HomeContext)
     const { getDashboardData } = homeContext
-
-    const handleSubmit = async (data) => {
-        if (data.status !== "completed") {
-            const task = data
-            task.status = "completed"
-            console.log(task)
-            await setCompletedTask(task)
-        }
-    }
+    
 
     const refresh = async () => {
         await getDashboardData()
     }
+
 
     return (
         <div className="table-inner h-full mx-auto max-w-screen rounded-none">
@@ -138,8 +133,8 @@ function TaskTable(props) {
                                                         <Checkbox name='status' className='focus:border-none active:outline-none' color="green" disabled={task.status === "completed" ? true : false} defaultChecked={task.status === "completed" ? true : false} />
                                                     </div>
                                                 </td>
-                                                <td onClick={() => handleSubmit(task)} className={classes}>
-                                                    <Button disabled={task.status === "completed" ? true : false} variant="text" size='sm' className='text-[#14a57c] rounded-sm'>complete</Button>
+                                                <td  className={classes}>
+                                                    <CompletedButton task ={task}/>
                                                 </td>
                                             </tr>
                                         );

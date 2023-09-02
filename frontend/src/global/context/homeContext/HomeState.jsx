@@ -19,10 +19,7 @@ const HomeState = (props) => {
 
 
     const getDashboardData = async () => {
-        setLoading(true)
         const response = await createServerRequest('GET', "/api/v1/admin/dashboard")
-        setLoading(false)
-
         if (response.success) {
             const data = response.data
             const users = response.users
@@ -31,7 +28,7 @@ const HomeState = (props) => {
             setDashboard(data)
             setUser(users)
             setTask(tasks)
-            return user
+            return data
         } else {
             showAlert("error", response.message)
         }
@@ -39,9 +36,7 @@ const HomeState = (props) => {
 
 
     const getUserDashboard = async () => {
-        setLoading(true)
         const response = await createServerRequest("GET", `/api/v1/user/dashboard`)
-        setLoading(false)
         if (response === undefined) return showAlert("error", "Server Error , please try after some time")
 
         console.log(response);
@@ -55,13 +50,12 @@ const HomeState = (props) => {
     }
 
     const getAdmin = async () => {
-        setLoading(true)
         const response = await createServerRequest("GET", `/api/v1/admin`)
-        setLoading(false)
         console.log(response);
         if (response !== undefined) {
             if (response.success) {
                 setMyState(response.admin)
+                return
             } else {
                 showAlert("error", response.message)
             }

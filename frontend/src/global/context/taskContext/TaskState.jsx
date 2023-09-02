@@ -63,7 +63,8 @@ function TaskState(props) {
         }
     }
 
-    const setCompletedTask = async (taskData) => {
+    const setCompletedTask = async (taskData,setBtnLoading) => {
+        setBtnLoading(true)
         console.log(taskData)
         const response = await createUserRequest("PUT", `/api/v1/user/task/submit-task/${taskData._id}`, taskData)
 
@@ -73,9 +74,11 @@ function TaskState(props) {
             const updatedTask = task.filter((task) => {
                 return responseTask._id !== task._id
             })
+            setBtnLoading(false)
             setTask([...updatedTask, responseTask])
             showAlert("info", response.message)
         } else {
+            setBtnLoading(false)
             showAlert("error", response.message)
         }
     }

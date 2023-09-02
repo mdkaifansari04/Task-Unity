@@ -14,8 +14,9 @@ function ProfileSection(props) {
     const { type, user } = props
 
     const capitalizeFirstLetter = (str) => {
-        return str.charAt(0).toUpperCase() + str.slice(1);
+        if (str !== undefined) return str.charAt(0).toUpperCase() + str.slice(1);
     }
+    
     return (
         <>
             <div className="main-profile-section text-[#767676]" style={{ maxWidth: "98%" }}>

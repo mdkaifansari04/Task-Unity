@@ -25,7 +25,6 @@ function AddTaskTable(props) {
     const { deleteTask } = context
 
 
-
     const handleEdit = (task) => {
         console.log(task)
         setOption("Update")

@@ -54,7 +54,8 @@ const UserState = (props) => {
 
             setUser([...updatedUser, responseUser])
             if(userType === 'user') setMyState(responseUser)
-            
+            localStorage.removeItem("taskUnityUserName")
+            localStorage.setItem("taskUnityUserName" , response.user.name)
             showAlert("info", message)
         } else {
             showAlert("error", message)
@@ -93,6 +94,9 @@ const UserState = (props) => {
 
         if (response.success) {
             const newAdmin = response.admin
+            console.log(newAdmin.name)
+            localStorage.removeItem("taskUnityUserName")
+            localStorage.setItem("taskUnityUserName" , newAdmin.name)
             setMyState(newAdmin)
             showAlert("success", response.message)
         } else {

@@ -6,7 +6,8 @@ import {
     DialogBody,
     Input,
     DialogFooter,
-    Textarea
+    Textarea,
+    Spinner
 } from "@material-tailwind/react";
 
 import HomeContext from '../../../global/context/homeContext/HomeContext';
@@ -25,18 +26,22 @@ function AddTaskModal(props) {
     const [taskData, setTaskData] = useState({})
     const [disabledOption, setdisableOption] = useState(true)
 
+    const [btnLoading, setBtnLoading] = useState(false)
+
     const handleChange = (e) => {
         setdisableOption(false)
         setTaskData({ ...taskData, [e.target.name]: e.target.value })
         console.log(taskData);
     }
-
+    
     const handleSubmit = async () => {
+        setBtnLoading(true)
         if (option === "Create") {
             await createTask(taskData)
         }else{
             await updateTask(taskData)
         }
+        setBtnLoading(false)
         handleOpen()
     }
 
@@ -96,7 +101,7 @@ function AddTaskModal(props) {
                         close
                     </Button>
                     <Button disabled={disabledOption} onClick={handleSubmit} className="green-btn rounded-md btn-green-shadow">
-                        {option}
+                        {btnLoading ? <Spinner className='w-4 h-4'/> : option}
                     </Button>
                 </DialogFooter>
             </Dialog>

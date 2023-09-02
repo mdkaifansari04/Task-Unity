@@ -4,12 +4,17 @@ import DrawerComponent from '../../components/layout/Drawer/Drawer';
 import { Outlet, useNavigate } from 'react-router-dom'; // Import useLocation
 import MainNavbar from '../../components/layout/Navbar/MainNavbar';
 import HomeContext from '../../global/context/homeContext/HomeContext';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AlertContext from '../../global/context/alertContext/AlertContext';
 
 function Home() {
     const context = useContext(HomeContext)
-    const { getDashboardData, getUserDashboard, getAdmin,setLoading } = context
+    const { getDashboardData, getUserDashboard, getAdmin } = context
+
+    const alertContext = useContext(AlertContext)
+    const {showAlert} = alertContext
+
 
     const [open, setOpen] = useState(false);
     const openDrawer = () => setOpen(true);
@@ -18,43 +23,37 @@ function Home() {
     const [desktopOption, setDesktopOption] = useState(true);
 
     const navigate = useNavigate()
-    useEffect(() => {
-        if (localStorage.getItem("taskUnityAuthToken") === null) navigate('/login')
-    }, [])
+
+    const userType = localStorage.getItem("taskUnityUserType")
 
     useEffect(() => {
+        if(navigator.onLine){
+            if (localStorage.getItem("taskUnityAuthToken") === null) navigate('/login')
+            if (localStorage.getItem("taskUnityAuthToken")) {
+                (async () => {
+                    await getDashboardData()
+                    if (userType !== 'admin') {
+                        await getUserDashboard()
+                        return
+                    }
+                    await getAdmin()
+                })()
+            }
+        }else{
+            showAlert("error", "No Internet Connection")
+        }
+
         const handleResize = () => {
             setDesktopOption(window.innerWidth > 640);
         };
 
         handleResize(); // Initial setup
         window.addEventListener('resize', handleResize);
-
+        console.log("done ");
         return () => {
             window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    useEffect(() => {
-        (async () => {
-            setLoading(true)
-            await getDashboardData()
-            setLoading(false)
-        })()
-    }, [])
-
-    const userType = localStorage.getItem("taskUnityUserType")
-
-    useEffect(() => {
-        (async () => {
-            if(userType !== 'admin' ){
-                setLoading(true)
-                await getUserDashboard() 
-                setLoading(false)
-                return
-            }
-                await getAdmin() 
-        })()
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
