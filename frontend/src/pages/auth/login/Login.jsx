@@ -38,7 +38,7 @@ function Login() {
     const handleLogin = async () => {
         setBtnLoading(true)
         const data = credentials
-        if (location.pathname === '/admin/login') data.userType = "admin"
+        if (location.pathname === '/admin-login') data.userType = "admin"
         else data.userType = "user"
 
         console.log(data);
