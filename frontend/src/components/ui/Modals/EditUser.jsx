@@ -76,7 +76,7 @@ function EditUser(props) {
                             close
                         </Button>
                         <Button className="green-btn rounded-sm btn-green-shadow" onClick={handleSubmit}>
-                        {btnLoading ? <Spinner className="h-5 w-5" /> : "Edit"}
+                        {btnLoading ? <Spinner className="h-3 w-3" /> : "Edit"}
                         </Button>
                     </DialogFooter>
                 </Dialog>

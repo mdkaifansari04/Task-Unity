@@ -19,7 +19,10 @@ const HomeState = (props) => {
 
 
     const getDashboardData = async () => {
+        console.log("Getting dashboard");
         const response = await createServerRequest('GET', "/api/v1/admin/dashboard")
+        console.log(response)
+        
         if (response.success) {
             const data = response.data
             const users = response.users

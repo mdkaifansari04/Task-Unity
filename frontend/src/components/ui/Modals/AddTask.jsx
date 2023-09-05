@@ -101,7 +101,7 @@ function AddTaskModal(props) {
                         close
                     </Button>
                     <Button disabled={disabledOption} onClick={handleSubmit} className="green-btn rounded-md btn-green-shadow">
-                        {btnLoading ? <Spinner className='w-4 h-4'/> : option}
+                        {btnLoading ? <Spinner className='w-3 h-3'/> : option}
                     </Button>
                 </DialogFooter>
             </Dialog>

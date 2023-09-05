@@ -95,7 +95,7 @@ export function AddUserModal(props) {
                             close
                         </Button>
                         <Button type="submit" disabled={disabledOption} onClick={handleSubmit} className="green-btn rounded-md btn-green-shadow">
-                        {btnLoading ? <Spinner className="h-5 w-5" /> : option}
+                        {btnLoading ? <Spinner className="h-3 w-3" /> : option}
                         </Button>
                     </DialogFooter>
                 </Dialog>

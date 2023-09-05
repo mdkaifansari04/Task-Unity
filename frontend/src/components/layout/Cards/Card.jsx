@@ -10,12 +10,13 @@ import {
 function MyCard(props) {
 
     const { title, details } = props
+    console.log(details);
     return (
         <div>
             <div className="single-card m-3">
                 <Card className="md:w-[11rem]  shadow-none rounded-none" style={{ borderRadius: "4px" }}>
                     <CardBody>
-                        <Typography  variant="h6" color="blue-gray" className="mb-2 font-light text-[#828687] text-xl">
+                        <Typography variant="h6" color="blue-gray" className="mb-2 font-light text-[#828687] text-xl">
                             {title}
                         </Typography>
                         <Typography className="font-semibold text-3xl py-1 text-[#6C757D]">
