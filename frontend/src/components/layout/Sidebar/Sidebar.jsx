@@ -10,6 +10,5 @@ export function Sidebar() {
                 <SideMenu />
             </div>
         </>
-
     );
 }
