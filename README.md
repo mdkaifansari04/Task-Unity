@@ -70,7 +70,7 @@
 
 About the Project
 
-"Task Unity" is a cutting-edge task management and collaboration solution. Our mission is simple: to enhance productivity and teamwork by simplifying task management and fostering transparent communication.
+*Task Unity* is a cutting-edge task management and collaboration solution. Our mission is simple: to enhance productivity and teamwork by simplifying task management and fostering transparent communication.
 
 Key Objectives
 
@@ -224,11 +224,11 @@ _Below are the instruction of how you can install and set up your app.
 - [x] Design User Interface (UI)
 - [x] Set Development Phase: 11/08/2023 to 11/09/2023
 - [x] Plan Testing Phase: 12/09/2023 to 15/09/2023
-- [ ] Complete Development Phase
-- [ ] Execute Testing Phase
-- [ ] Launch Date: 17/09/2023
-- [ ] Gather User Feedback
-- [ ] Continuous Improvement and Feature Enhancements
+- [x] Complete Development Phase
+- [x] Execute Testing Phase
+- [x] Launch Date: 17/09/2023
+- [x] Gather User Feedback
+- [x] Continuous Improvement and Feature Enhancements
 
 ### Future Enhancements
 
@@ -248,49 +248,29 @@ See the [open issues](https://github.com/Mdkaif-123/Task-Unity/issues) for a ful
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## 🛡️ License
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Task Unity is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+## 🤔 How to Contribute?
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributing to open-source software (OSS) projects is a rewarding experience. It allows you to learn new skills and make valuable contributions to the community.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- Read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
+- Follow the [Git Workflow](docs/git.md) for best practices.
+- Check the [Contribution Guidelines](CONTRIBUTING.md) for detailed instructions.
+- Create an [issue](https://github.com/mdkaifansari04/Task-Unity/issues) to report bugs or suggest new features.
+- Ensure your commits have descriptive messages.
 
+### Setup
 
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Md Kaif Ansari - [@LinkedIn](https://www.linkedin.com/in/md-kaif-ansari/) - amdkaif843@gmail.com
-
-Project Link : [https://github.com/Mdkaif-123/Task-Unity](https://github.com/Mdkaif-123/Task-Unity)
-
-Live Link : [Task Unity](https://task-unity.onrender.com/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+- [Setting up a development environment](docs/setup.md)
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Use this space to list resources you find helpful and would like to give credit to. Here are some useful tools and references that have contributed to the development of Task Unity:
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
@@ -302,6 +282,17 @@ Use this space to list resources you find helpful and would like to give credit 
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## ✨ Top Contributors
+
+A big thank you to our top contributors who have significantly improved Task Unity. Your hard work and dedication are truly appreciated! 🌟😄
+
+[![Contributors](https://contrib.rocks/image?repo=mdkaifansari04/Task-Unity)](https://github.com/mdkaifansari04/Task-Unity/graphs/contributors)
+
+## 🙏🏽 Support
+
+This project needs your support! Please star 🌟 this repository to show your appreciation.
 
 
 
